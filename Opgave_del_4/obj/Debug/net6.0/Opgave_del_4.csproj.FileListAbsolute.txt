@@ -1,0 +1,5 @@
+D:\project\Opgave_del_4\Opgave_del_4\obj\Debug\net6.0\Opgave_del_4.csproj.AssemblyReference.cache
+D:\project\Opgave_del_4\Opgave_del_4\obj\Debug\net6.0\Opgave_del_4.GeneratedMSBuildEditorConfig.editorconfig
+D:\project\Opgave_del_4\Opgave_del_4\obj\Debug\net6.0\Opgave_del_4.AssemblyInfoInputs.cache
+D:\project\Opgave_del_4\Opgave_del_4\obj\Debug\net6.0\Opgave_del_4.AssemblyInfo.cs
+D:\project\Opgave_del_4\Opgave_del_4\obj\Debug\net6.0\Opgave_del_4.csproj.CoreCompileInputs.cache
