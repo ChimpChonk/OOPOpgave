@@ -166,7 +166,7 @@ do
                 Console.WriteLine($"{item.StudentInfo.LastName} {item.StudentInfo.FirstName} Course: {item.CoursesInfo.CourseName}  Teacher: {item.CoursesInfo.Teachers.FirstName} {item.CoursesInfo.Teachers.LastName}");
             }
 
-            //check how many students are in a course and throw error if students < 8 or students > 16
+            //check student amount
             try
             {
                 courses.CourseStudentAmount(courses.StudentList(_enrollList));
@@ -202,7 +202,6 @@ do
     {
         menuLoop = true;
     }
-
 }
 while (!menuLoop);
 
@@ -211,5 +210,4 @@ foreach (var item in _enrollList.EnrollList)
 {
     Console.WriteLine($"{item.StudentInfo.FirstName} {item.StudentInfo.LastName} Age: {item.StudentInfo.Age}  Course: {item.CoursesInfo.CourseName}  Teacher: {item.CoursesInfo.Teachers.FirstName} {item.CoursesInfo.Teachers.LastName}.");
 }
-
 Console.WriteLine("Press enter to exit");
