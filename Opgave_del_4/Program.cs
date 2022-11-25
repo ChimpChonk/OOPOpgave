@@ -37,7 +37,7 @@ Dictionary<CourseEnum, int> courseEnumDict = new Dictionary<CourseEnum, int>()
     {CourseEnum.Computerteknologi, (int)CourseEnum.Computerteknologi},
     {CourseEnum.Netværk, (int)CourseEnum.Netværk }
 };
-//------------------------------ TEmp Test -------------------------------------
+//------------------------------ TEmp Test --------------------------------------------------------------------------------------------------------------------------------
 /*
 string conCourse = "oop";
 Temp temp1;
@@ -70,13 +70,13 @@ foreach (var item in _enrollmentList2)
     Console.WriteLine($"{item.StudentInfo.FirstName} {item.StudentInfo.LastName}  Course: {item.CoursesInfo.CourseName}  Teacher: {item.CoursesInfo.Teachers.FirstName} {item.CoursesInfo.Teachers.LastName} ");
 }
 */
-//-----------------------------------------------------------------------
+//Enrollment _enrollList = new Enrollment();
+//List<Enrollment> _enrollmentList = new List<Enrollment>();
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Enrollment _enrollList = new();
 _enrollList.EnrollList = new List<Enrollment>();
 
-//Enrollment _enrollList = new Enrollment();
-//List<Enrollment> _enrollmentList = new List<Enrollment>();
 
 bool menuLoop = false;
 
@@ -84,21 +84,19 @@ string? firstName;
 string? lastName;
 string? dateOfBirth;
 string? course;
-string? addCourses;
-bool moreCourses = false;
+bool moreCourses = true;
 string? addStudent;
-bool success = false;
 int studentID;
 bool inputCheck = true;
 
 /*
- ------------------------------------------------------------------------------
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------
                             Menu
- ------------------------------------------------------------------------------
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------
  */
 do
 {
-    while(inputCheck)
+    while (inputCheck)
     {
         Console.WriteLine("1) Add a student to a Course");
         Console.Write("\nChoose 1: ");
@@ -110,42 +108,35 @@ do
             Console.ReadKey();
             Console.Clear();
         }
-
         else
             inputCheck = false;
-
     }
-    do
+
+    Console.Clear();
+    Console.Write("Give Student ID: ");
+    while (!int.TryParse(Console.ReadLine(), out studentID))
     {
 
+        Console.WriteLine("Error: Write a number not a letter.");
+        Console.ReadKey();
         Console.Clear();
         Console.Write("Give Student ID: ");
-        success = int.TryParse(Console.ReadLine(), out studentID);
-        if (!success)
-        {
-            Console.WriteLine("Error: Write a number not a letter.");
-            Console.ReadKey();
-        }
+
     }
-    while (!success);
-
-
     Console.Write("Student First Name: ");
     firstName = Console.ReadLine();
 
     Console.Write("Student Last Name: ");
     lastName = Console.ReadLine();
 
-    Console.Write("Student Date of Birth (dd-mm-yyyy): ");
+    Console.Write("Student Date of Birth: ");
     dateOfBirth = Console.ReadLine();
-    if(dateOfBirth != DateTime.ParseExact(dateOfBirth, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString())
-    {
-        Console.WriteLine("Wrong date Format");
-    }
-    Students student = new(studentID, firstName, lastName, dateOfBirth);
 
+    Students student = new(studentID, firstName, lastName, dateOfBirth);
     do
     {
+
+        //Conver Enum to sting and print the string
         Console.WriteLine("Choose Course: \n----------------------------------------------------");
         foreach (CourseEnum courseEnum in Enum.GetValues(typeof(CourseEnum)))
         {
@@ -168,12 +159,14 @@ do
             Course courses = courseList[courseIndex];
             _enrollList.EnrollList.Add(new Enrollment(student, courses));
 
+            //Sort after last name
             _enrollList.EnrollList.Sort();
             foreach (var item in _enrollList.EnrollList)
             {
-                Console.WriteLine($"{item.StudentInfo.FirstName} {item.StudentInfo.LastName} Course: {item.CoursesInfo.CourseName}  Teacher: {item.CoursesInfo.Teachers.FirstName} {item.CoursesInfo.Teachers.LastName}");
+                Console.WriteLine($"{item.StudentInfo.LastName} {item.StudentInfo.FirstName} Course: {item.CoursesInfo.CourseName}  Teacher: {item.CoursesInfo.Teachers.FirstName} {item.CoursesInfo.Teachers.LastName}");
             }
 
+            //check how many students are in a course and throw error if students < 8 or students > 16
             try
             {
                 courses.CourseStudentAmount(courses.StudentList(_enrollList));
@@ -183,26 +176,25 @@ do
             {
                 Console.WriteLine(ex.Message);
             }
+
+            //Add more courses to current student
+            Console.WriteLine("Press 1 to add more courses. Press any other key to exit");
+
+            if (Console.ReadLine() != "1")
+                moreCourses = false;
         }
 
+        //Input check error
         else
         {
             Console.WriteLine("Wrong Choice My lad. Press any Key to try again");
             Console.ReadLine();
-            break;
         }
-
-        Console.WriteLine("Press 1 to add more courses. Press any other key to exit");
-        addCourses = Console.ReadLine();
-        if (addCourses != "1")
-        {
-            moreCourses = false;
-        }
-        else
-            Console.Clear();
+        Console.Clear();
     }
-    while (!moreCourses);
+    while (moreCourses);
 
+    //Add new student or option
     Console.WriteLine("Press 1 to add Student or Any press any other keys to exit");
     addStudent = Console.ReadLine();
     Console.Clear();
@@ -214,6 +206,7 @@ do
 }
 while (!menuLoop);
 
+//Print Enrollment list
 foreach (var item in _enrollList.EnrollList)
 {
     Console.WriteLine($"{item.StudentInfo.FirstName} {item.StudentInfo.LastName} Age: {item.StudentInfo.Age}  Course: {item.CoursesInfo.CourseName}  Teacher: {item.CoursesInfo.Teachers.FirstName} {item.CoursesInfo.Teachers.LastName}.");

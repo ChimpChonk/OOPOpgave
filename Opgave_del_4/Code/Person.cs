@@ -23,7 +23,7 @@ namespace Opgave_del_4.Code
         public int CalcAge(string dateOfBirth)
         {
             DateOfBirth = dateOfBirth;
-            DateTime _date = DateTime.ParseExact(dateOfBirth, "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            DateTime _date = DateTime.Parse(dateOfBirth);
             int age = DateTime.Now.Year - _date.Year;
             return age;
         }
