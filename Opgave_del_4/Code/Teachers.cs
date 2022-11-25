@@ -29,7 +29,7 @@ namespace Opgave_del_4.Code
             sb.Append($"{FirstName} {LastName}:\n");
             foreach (var item in enrollment.EnrollList)
             {
-                if (item.CoursesInfo.Teachers.FirstName == FirstName)
+                if (item.CoursesInfo.Teachers.FirstName == FirstName && item.CoursesInfo.Teachers.LastName == LastName)
                 {
                     if (!coursesList.Contains(item.CoursesInfo.CourseName))
                     {
