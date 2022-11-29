@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\project\\Opgave_del_4\\Opgave_del_4\\Opgave_del_4.csproj",
-      "projectName": "Opgave_del_4",
-      "projectPath": "D:\\project\\Opgave_del_4\\Opgave_del_4\\Opgave_del_4.csproj",
+      "projectUniqueName": "D:\\project\\Opgave_del_4\\Opgave_del_4\\OpgaveDel4.csproj",
+      "projectName": "OpgaveDel4",
+      "projectPath": "D:\\project\\Opgave_del_4\\Opgave_del_4\\OpgaveDel4.csproj",
       "packagesPath": "C:\\Users\\Sanj\\.nuget\\packages\\",
       "outputPath": "D:\\project\\Opgave_del_4\\Opgave_del_4\\obj\\",
       "projectStyle": "PackageReference",
