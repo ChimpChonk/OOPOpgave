@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Opgave_del_4.Code
+namespace OpgaveDel4.Code
 {
     abstract class Person
     {
