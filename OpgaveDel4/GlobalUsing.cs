@@ -1,2 +1,2 @@
-﻿global using Opgave_del_4.Code;
-global using Opgave_del_4.Code.Enum;
+﻿global using OpgaveDel4.Code;
+global using OpgaveDel4.Code.Enum;
